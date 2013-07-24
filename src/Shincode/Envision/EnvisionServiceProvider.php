@@ -28,7 +28,7 @@ class EnvisionServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+		
 	}
 
 	/**
@@ -38,7 +38,9 @@ class EnvisionServiceProvider extends ServiceProvider {
 	 */
 	public function provides()
 	{
-		return array();
+		return array(
+			
+		);
 	}
 
 }
