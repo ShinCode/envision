@@ -1,6 +1,6 @@
 {
     "name": "shincode/envision",
-    "description": "",
+    "description": "Envision for Laravel 4",
     "authors": [
         {
             "name": "Shincode",
@@ -13,11 +13,12 @@
     },
     "autoload": {
         "classmap": [
-            "src/migrations"
+            "src/models"
         ],
         "psr-0": {
             "Shincode\\Envision": "src/"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "license": "MIT"
 }
