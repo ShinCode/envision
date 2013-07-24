@@ -1,0 +1,23 @@
+{
+    "name": "shincode/envision",
+    "description": "",
+    "authors": [
+        {
+            "name": "Shincode",
+            "email": "shin@shincode.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.x"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Shincode\\Envision": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
