@@ -23,8 +23,8 @@ class EnvisionServiceProvider extends ServiceProvider {
 		$this->package('shincode/envision');
 
 		// Enable Envision-specific class generation when the classes are not found
-		if (Config::get('envision::settings.generate')) {
-			Autoloader::init();
+		if (Config::get('envision::settings.autoload')) {
+			Autoloader::init(Config::get('envision::settings.create'));
 		}
 
 	}

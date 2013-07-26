@@ -8,17 +8,19 @@ class Autoloader {
     public static $instance;
 
     protected static $templatesDir;
+    protected static $autoGenerate;
 
 
-    public static function init() {
+    public static function init($create = false) {
         if (self::$instance == NULL)
-            self::$instance = new self();
+            self::$instance = new self($create);
 
         return self::$instance;
     }
 
-    public function __construct() {
+    public function __construct($create = false) {
         static::$templatesDir = __DIR__.DIRECTORY_SEPARATOR.'Templates'.DIRECTORY_SEPARATOR;
+        static::$autoGenerate = $create;
         spl_autoload_register(array($this, 'resource'));
     }
 
@@ -40,10 +42,17 @@ class Autoloader {
             $filename = $class.'.php';
 
             // Create the class if needed
-            $this->create($path, $class, $filename, $parent, $parentnamespace, $namespace);
-
+            if (static::$autoGenerate) {
+                $this->create($path, $class, $filename, $parent, $parentnamespace, $namespace);
+            } else {
+                // WIll not generate, but at least check if the file exists. If not, return.
+                if (!File::exists($path.$filename))
+                    return;
+            }
+            
             // Load the class
             $this->load($path, $class, $namespace);
+            
             
         }
 
