@@ -6,7 +6,8 @@ Envision is a framework extension for Laravel 4.
 Current version does the following:
 - Autoloads Envision specific classses without creating an alias for them.
 - Generates Envision specific classes on the fly just by mentioning it (ie: new FoobarResource).
-- Provides an empty resource class.
+- Provides a Resource class, for managing Eloquent calls.
+- Provides a Controller class, for managing Routes.
 
 
 ### Installation
