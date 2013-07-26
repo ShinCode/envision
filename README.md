@@ -10,8 +10,6 @@ Current version does the following:
 
 ### Installation
 
-Note: this is just boilertext at the moment, this package hasn't been uploaded to Packagist yet.
-
 Install with Composer. Add `shincode/envision` to `composer.json`.
 
     "require": {
