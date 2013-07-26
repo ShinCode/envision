@@ -1,6 +1,8 @@
 <?php namespace Shincode\Envision;
 
 use Illuminate\Support\ServiceProvider;
+use Shincode\Envision\Support\Autoloader;
+use Illuminate\Support\Facades\Config;
 
 class EnvisionServiceProvider extends ServiceProvider {
 
@@ -19,6 +21,12 @@ class EnvisionServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		$this->package('shincode/envision');
+
+		// Enable Envision-specific class generation when the classes are not found
+		if (Config::get('envision::settings.generate')) {
+			Autoloader::init();
+		}
+
 	}
 
 	/**
