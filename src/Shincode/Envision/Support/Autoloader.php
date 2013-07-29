@@ -49,7 +49,7 @@ class Autoloader {
 
             $path = app_path().DIRECTORY_SEPARATOR.'controllers'.DIRECTORY_SEPARATOR;
             $namespace = null;
-            $parentnamespace = 'LaravelBook\\Ardent';
+            $parentnamespace = __NAMESPACE__;
             $this->extend($path, $namespace, $parentnamespace, $class, ucfirst($parent));
 
         }
