@@ -49,11 +49,52 @@ The next step is to display them. Let's see how that works. Change the getIndex 
 
 	public function getIndex() {
 	    $phones = PhoneResource::all();
-	    View::make('phone')->with('phones', $phones);
+	    return View::make('phone')->with('phones', $phones);
 	}
 	
-Let's make a view file as well and save it as view/phone.blade.php UNDER  CONSTRUCTION
+Let's make a view file as well and save it as view/phone.blade.php
 
+	@foreach($phones as $phone)
+		<h1>{{ $phone->name }}</h1>
+	@endforeach
+	
+Now open the url to your site/phone.
+
+It just works!
+
+By now you should see there are a few new files created. We've been using the Resource class, the Ardent class and the Presenter class.
+
+Let's try using the Presenter class. There should be a new folder in your app folder called 'presenters'. Open PhonePresenter.php and add the following function
+
+	public function presentFoo() {
+		return 'bar';
+	}
+	
+Now let's edit view/phone.blade.php to
+
+	@foreach($phones as $phone)
+		<h1>{{ $phone->name }}</h1>
+		<span>{{ $phone->foo }}</span>
+	@endforeach
+
+And there it is. Additional view logic right at your fingertips.
+For more information about the presenter, check here:
+
+https://github.com/robclancy/presenter
+
+
+Ardent example will be added later, for now you can read about ardent here:
+
+https://github.com/laravelbook/ardent
+
+
+### Deployment
+
+For development, having Envision is really nice. But when deploying, it's highly recommended to turn off auto-generation.
+In vendor/shincode/envision/src/config/settings.php you can change the following:
+- autoload = Automatically tries to find classes used by Envision. Can be left on but it has some impact on performance. For a final deployment, it's recommended to actually autoload all the files and create aliases in app.php.
+- create = Automatically generate classes when not found. Highly recommended to disable when deploying for obvious reasons.
+- log = Not doing anything at the moment.
 
 ### Installation
 
