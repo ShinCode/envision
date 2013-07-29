@@ -8,6 +8,27 @@ The goal of using Envision is speeding up development. It does a few things to h
 - Uses the Ardent package automatically.
 - Uses the Presenter package automatically.
 
+### Installation
+
+Envision depends on the Ardent and the Presenter packages in your Laravel framework. So please add those packages as well.
+Add `shincode/envision`, Ardent and Presenter to `composer.json`.
+
+    "require": {
+      "laravel/framework": "4.0.*",
+      "shincode/envision": "dev-master",
+      "laravelbook/ardent": "dev-master",
+	  "robclancy/presenter": "1.1.*"
+    }
+
+Run update with Composer:
+
+    composer update
+    
+Add the serviceproviders in `app/config/app.php`:
+
+    'Shincode\Envision\EnvisionServiceProvider',
+    'Robbo\Presenter\PresenterServiceProvider',
+
 ### Example
 Here's a mini tutorial. Let's create a table called phones for our database. Run the follow artisan command:
 
@@ -95,27 +116,6 @@ In vendor/shincode/envision/src/config/settings.php you can change the following
 - autoload = Automatically tries to find classes used by Envision. Can be left on but it has some impact on performance. For a final deployment, it's recommended to actually autoload all the files and create aliases in app.php.
 - create = Automatically generate classes when not found. Highly recommended to disable when deploying for obvious reasons.
 - log = Not doing anything at the moment.
-
-### Installation
-
-Envision depends on the Ardent and the Presenter packages in your Laravel framework. So please add those packages as well.
-Add `shincode/envision`, Ardent and Presenter to `composer.json`.
-
-    "require": {
-      "laravel/framework": "4.0.*",
-      "shincode/envision": "dev-master",
-      "laravelbook/ardent": "dev-master",
-	  "robclancy/presenter": "1.1.*"
-    }
-
-Run update with Composer:
-
-    composer update
-    
-Add the serviceproviders in `app/config/app.php`:
-
-    'Shincode\Envision\EnvisionServiceProvider',
-    'Robbo\Presenter\PresenterServiceProvider',
 
 ### Contributing To Envision
 
