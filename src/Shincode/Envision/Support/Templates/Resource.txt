@@ -1,0 +1,26 @@
+<?php {{ filenamespace }}
+
+use {{ parentnamespace }}\{{ parent }};
+
+class {{ class }} extends {{ parent }} {
+
+	/*
+	| By default, all methods in this class have an underscore at the end.
+	| This way the methods can be called like they were static.
+	|
+	| Example:
+	|
+	| class Foo {
+	| 	public function bar_() {
+	| 		// This method can be called as static without underscore.
+	| 	}
+	| }
+	|
+	|
+	| Now this works:
+	| Foo::bar();
+	*/
+
+}
+
+?>

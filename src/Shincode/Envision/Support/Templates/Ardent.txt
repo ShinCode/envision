@@ -1,0 +1,17 @@
+<?php {{ filenamespace }}
+
+use {{ parentnamespace }}\{{ parent }};
+use Robbo\Presenter\PresentableInterface;
+
+class {{ class }} extends {{ parent }} implements PresentableInterface {
+
+    /*
+    | Return a created presenter.
+    */
+    public function getPresenter() {
+        return new {{ class }}Presenter($this);
+    }
+
+}
+
+?>

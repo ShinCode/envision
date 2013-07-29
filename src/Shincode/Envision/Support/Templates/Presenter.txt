@@ -1,0 +1,15 @@
+<?php {{ filenamespace }}
+
+use {{ parentnamespace }}\{{ parent }};
+class {{ class }} extends {{ parent }} {
+
+	/*
+	| Example:
+	| public function presentFoo() {
+    |    return 'bar';
+    | }
+    */
+
+}
+
+?>

@@ -23,51 +23,83 @@ class Autoloader {
         static::$autoGenerate = $create;
         spl_autoload_register(array($this, 'resource'));
         spl_autoload_register(array($this, 'controller'));
+        spl_autoload_register(array($this, 'presenter'));
     }
 
-    public function controller($class) {
+    public function presenter($class) {
 
-        $path = app_path().DIRECTORY_SEPARATOR.'controllers'.DIRECTORY_SEPARATOR;
-        $namespace = null;
-        $this->check($path, $namespace, $class, ucfirst(__FUNCTION__));
-
-    }
-
-    public function resource($class) {
-        
-        $path = app_path().DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.str_plural(strtolower(__FUNCTION__)).DIRECTORY_SEPARATOR;
-        $namespace = str_plural(ucfirst(__FUNCTION__));
-        $this->check($path, $namespace, $class, ucfirst(__FUNCTION__));
-
-    }
-
-    // Check if anything could be executed
-    protected function check($path, $namespace, $class, $parent) {
-        // Continue if classname check passes
+        // Check if the classname is something that should be caught
+        $parent = ucfirst(__FUNCTION__);
         if (substr($class, -strlen($parent)) == $parent) {
 
-            // Create vars
-            $filename = $class.'.php';
+            $path = app_path().DIRECTORY_SEPARATOR.'presenters'.DIRECTORY_SEPARATOR;
+            $namespace = null;
+            $parentnamespace = 'Robbo\\Presenter';
+            $this->extend($path, $namespace, $parentnamespace, $class, ucfirst($parent));
 
-            // Create the class if needed
-            if (static::$autoGenerate) {
-                $this->create($path, $class, $filename, $parent, $namespace);
-            } else {
-                // WIll not generate, but at least check if the file exists. If not, return.
-                if (!File::exists($path.$filename))
-                    return;
-            }
-
-            // Load the class
-            $this->load($path, $class, $namespace);
-            
-            
         }
 
     }
 
+    public function controller($class) {
+
+        // Check if the classname is something that should be caught
+        $parent = ucfirst(__FUNCTION__);
+        if (substr($class, -strlen($parent)) == $parent) {
+
+            $path = app_path().DIRECTORY_SEPARATOR.'controllers'.DIRECTORY_SEPARATOR;
+            $namespace = null;
+            $parentnamespace = 'LaravelBook\\Ardent';
+            $this->extend($path, $namespace, $parentnamespace, $class, ucfirst($parent));
+
+        }
+
+    }
+
+    public function resource($class) {
+
+        // Check if the classname is something that should be caught
+        $parent = ucfirst(__FUNCTION__);
+        if (substr($class, -strlen($parent)) == $parent) {
+        
+            $path = app_path().DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.str_plural(strtolower(__FUNCTION__)).DIRECTORY_SEPARATOR;
+            $namespace = str_plural(ucfirst(__FUNCTION__));
+            $parentnamespace = __NAMESPACE__;
+            $this->extend($path, $namespace, $parentnamespace, $class, ucfirst($parent));
+
+            // Also check for the model
+            $path = app_path().DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR;
+            $model = ucfirst(substr($class, 0, -strlen( $parent )));
+            $namespace = null;
+            $parentnamespace = 'LaravelBook\\Ardent';
+            $this->extend($path, $namespace, $parentnamespace, $model, 'Ardent', true);
+
+        }
+
+    }
+
+    // Create a file from a template if needed
+    protected function extend($path, $namespace, $parentnamespace, $class, $parent) {
+
+        // Create vars
+        $filename = $class.'.php';
+
+        // Create the class if needed
+        if (static::$autoGenerate) {
+            $this->create($path, $class, $filename, $parent, $namespace, $parentnamespace);
+        } else {
+            // WIll not generate, but at least check if the file exists. If not, return.
+            if (!File::exists($path.$filename))
+                return;
+        }
+
+        // Load the class
+        $this->load($path, $class, $namespace);
+
+    }
+
     // Create the necessary files
-    protected function create($path, $class, $filename, $parent, $namespace) {
+    protected function create($path, $class, $filename, $parent, $filenamespace, $parentnamespace) {
         // Check if directory exists
         if (!File::exists($path)) {
             File::makeDirectory($path);
@@ -81,10 +113,10 @@ class Autoloader {
             $location = File::exists($location) ? $location : static::$templatesDir.'Default.txt';
 
             $code = File::get($location);
-            $filenamespace = ($namespace) ? 'namespace '.$namespace.';' : '';
+            $filenamespacetext = ($filenamespace) ? 'namespace '.$filenamespace.';' : '';
 
             $originaltags = array('{{ parentnamespace }}', '{{ filenamespace }}', '{{ class }}', '{{ parent }}');
-            $replacewith = array(__NAMESPACE__, $filenamespace, $class, $parent);
+            $replacewith = array($parentnamespace, $filenamespacetext, $class, $parent);
 
             $code = str_replace($originaltags, $replacewith, $code);
 
