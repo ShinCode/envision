@@ -1,14 +1,14 @@
 <?php namespace Shincode\Envision\Support;
 
-abstract class Resource {
+use Shincode\Envision\Support\Singleton;
+
+abstract class Resource extends Singleton {
 
     /*
     | Store the model name in a variable
     */
     protected $model;
     
-    const METHODSYMBOL = '_';
-
     /*
     | Extract the model name from the full classname
     */
@@ -24,11 +24,22 @@ abstract class Resource {
 
 
     /*
-    | Find one model
+    | Find one model by id
     */
     public function find_($id) {
         $model = $this->model;
         return $model::find($id);
+    }
+
+
+    /*
+    | Specific search
+    */
+    public function search_($field, $search) {
+        $model = $this->model;
+
+        $result = $model::where($field, '=', $search)->orderBy('id', 'desc')->first();
+        return $result;
     }
 
 
@@ -79,50 +90,6 @@ abstract class Resource {
         $model = $this->find($id);
 
         $model->delete();
-    }
-
-    /*
-    | Keep a singleton instance
-    */
-    final public static function getInstance() {
-        static $instances = array();
-
-        $calledClass = get_called_class();
-
-        if (!isset($instances[$calledClass])) {
-            $instances[$calledClass] = new $calledClass();
-        }
-
-        return $instances[$calledClass];
-    }
-
-    /*
-    | Handle dynamic, static calls.
-     */
-    public static function __callStatic($method, $args) {
-
-        $instance = static::getInstance();
-        $method .= self::METHODSYMBOL;
-
-        switch (count($args)) {
-            case 0:
-                return $instance->$method();
-
-            case 1:
-                return $instance->$method($args[0]);
-
-            case 2:
-                return $instance->$method($args[0], $args[1]);
-
-            case 3:
-                return $instance->$method($args[0], $args[1], $args[2]);
-
-            case 4:
-                return $instance->$method($args[0], $args[1], $args[2], $args[3]);
-
-            default:
-                return call_user_func_array(array($instance, $method), $args);
-        }
     }
 
 }
