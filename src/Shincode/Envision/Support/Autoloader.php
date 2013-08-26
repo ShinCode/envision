@@ -126,16 +126,22 @@ class Autoloader {
 
     protected function load($path, $class, $namespace) {
 
-        require($path.$class.'.php');
-
         $namespace .= ($namespace) ? '\\' : '';
 
-        // Create Alias
+        // Load class file if unknown
+        if (!class_exists($namespace.$class)) {
+            require($path.$class.'.php');
+        }
+        
+        // Create Alias if needed
         $loader = AliasLoader::getInstance();
-        $loader->alias($class, $namespace.$class);
-        if (!class_exists($class))
-            $loader->load($class);
-
+        $aliases = $loader->getAliases();
+        if (!array_key_exists ($class, $aliases)) {
+            $loader->alias($class, $namespace.$class);
+            if (!class_exists($class))
+                $loader->load($class);
+        }
+        
     }
 
 }

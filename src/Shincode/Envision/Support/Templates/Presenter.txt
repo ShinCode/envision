@@ -10,6 +10,14 @@ class {{ class }} extends {{ parent }} {
     | }
     */
 
+    public function presentCreatedTime() {
+    	return \Carbon\Carbon::createFromTimeStamp(strtotime($this->created_at))->diffForHumans();
+    }
+
+    public function presentUpdatedTime() {
+    	return \Carbon\Carbon::createFromTimeStamp(strtotime($this->updated_at))->diffForHumans();
+    }
+
 }
 
 ?>

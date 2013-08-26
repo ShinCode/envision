@@ -39,7 +39,7 @@ abstract class Resource {
         $limit = $limit ? $limit : null;
 
         $model = $this->model;
-        return $limit ? $model::take(10)->orderBy('DESC')->get() : $model::all();
+        return $limit ? $model::take($limit)->orderBy('id', 'desc')->get() : $model::all();
     }
 
     /*
