@@ -66,30 +66,36 @@ abstract class Resource extends Singleton {
     | Update one entry
     */
     public function update_($id, Array $args) {
-        $model = $this->find($id);
+        $model = $this->model;
 
-        return $this->standardsave($model, $args);
+        $modelobj = $model::find($id);
+
+        return $this->standardsave($modelobj, $args);
     }
 
 
     /*
     | Standard saving method
     */
-    protected function standardsave($model, $args) {
+    protected function standardsave($modelobj, $args) {
         foreach($args as $attribute => $arg) {
-            $model->{$attribute} = $arg;
+            $modelobj->{$attribute} = $arg;
         }
 
-        return $model->save();
+        $modelobj->save();
+
+        return $modelobj;
     }
 
     /*
     | Delete one entry
     */
     public function delete_($id) {
-        $model = $this->find($id);
+        $model = $this->model;
 
-        $model->delete();
+        $modelobj = $model::find($id);
+
+        $modelobj->delete();
     }
 
 }
