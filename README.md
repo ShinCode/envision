@@ -14,10 +14,10 @@ Envision depends on the Ardent and the Presenter packages in your Laravel framew
 Add `shincode/envision`, Ardent and Presenter to `composer.json`.
 
     "require": {
-      "laravel/framework": "4.0.*",
+      "laravel/framework": "4.2.*",
       "shincode/envision": "dev-master",
-      "laravelbook/ardent": "dev-master",
-	  "robclancy/presenter": "1.1.*"
+      "laravelbook/ardent": "2.5.*",
+      "robclancy/presenter": "1.3.*"
     }
 
 Run update with Composer:
@@ -32,7 +32,7 @@ Add the serviceproviders in `app/config/app.php`:
 ### Example
 Here's a mini tutorial. Let's create a table called phones for our database. Run the follow artisan command:
 
-	php artisan migrate:make create_users_table
+	php artisan migrate:make create_phones_table
 	
 Let's edit that file (keeping it simple)
 
