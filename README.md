@@ -1,6 +1,6 @@
 ## Envision
 
-Envision is a framework extension for Laravel 4.
+Envision is a framework extension for Laravel 4.2.
 [![ProjectStatus](http://stillmaintained.com/ShinCode/envision.png)](http://stillmaintained.com/ShinCode/envision)
 
 The goal of using Envision is speeding up development. It does a few things to help with that:
