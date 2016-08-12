@@ -42,6 +42,15 @@ abstract class Resource extends Singleton {
         return $result;
     }
 
+    /*
+    | Filter
+    */
+    public function filter_($field, $symbol, $search, $limit = null) {
+        $limit = $limit ? $limit : null;
+
+        $model = $this->model;
+        return $limit ? $model::where($field, '=', $search)->take($limit)->orderBy('id', 'desc')->get() : $model::where($field, '=', $search)->get();
+    }
 
     /*
     | Get all the results
