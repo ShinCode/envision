@@ -49,7 +49,7 @@ abstract class Resource extends Singleton {
         $limit = $limit ? $limit : null;
 
         $model = $this->model;
-        return $limit ? $model::where($field, '=', $search)->take($limit)->orderBy('id', 'desc')->get() : $model::where($field, '=', $search)->get();
+        return $limit ? $model::where($field, $symbol, $search)->take($limit)->orderBy('id', 'desc')->get() : $model::where($field, '=', $search)->get();
     }
 
     /*
