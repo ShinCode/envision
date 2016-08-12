@@ -80,7 +80,10 @@ class Autoloader {
 
     // Create a file from a template if needed
     protected function extend($path, $namespace, $parentnamespace, $class, $parent) {
-
+        // Strip parent namespace
+        $exploded_class = explode('\\', $class);
+        $class = end($exploded_class);
+        
         // Create vars
         $filename = $class.'.php';
 
