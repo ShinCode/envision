@@ -25,28 +25,28 @@ class {{ class }} extends {{ parent }} {
 	| Default Resource functions:
 	|
 	| Find one model by id
-    | find($id)
+	| find($id)
 	|
 	| Specific search
 	| search($field, $search)
-    |
-    | Get all the results
-    | all($limit = null);
-    |
-    | Insert one entry
-    | insert(Array $args);
-    |
-    | Insert one entry
-    | insert(Array $args);
 	|
-    | Update one entry
-    | update($id, Array $args);
-    |
-    | Standard saving method
-    | standardsave($model, $args);
-    |
-    | Delete one entry
-    | delete_($id);
+	| Filter
+	| filter($field, $symbol, $search, $limit = null);
+	|
+	| Get all the results
+	| all($limit = null);
+	|
+	| Insert one entry
+	| insert(Array $args);
+	|
+	| Update one entry
+	| update($id, Array $args);
+	|
+	| Standard saving method
+	| standardsave($model, $args);
+	|
+	| Delete one entry
+	| delete_($id);
 	*/
 
 }
