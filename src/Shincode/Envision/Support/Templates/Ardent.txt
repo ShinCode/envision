@@ -13,5 +13,3 @@ class {{ class }} extends {{ parent }} implements PresentableInterface {
     }
 
 }
-
-?>
