@@ -5,5 +5,3 @@ use {{ parentnamespace }}\{{ parent }};
 class {{ class }} extends {{ parent }} {
 
 }
-
-?>
