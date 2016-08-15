@@ -50,5 +50,3 @@ class {{ class }} extends {{ parent }} {
 	*/
 
 }
-
-?>
