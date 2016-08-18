@@ -2,6 +2,18 @@
 
 use Shincode\Envision\Support\Singleton;
 
+/**
+ * @method static mixed find(int $id) Find one model by id
+ * @method static mixed search(string $field, string $search) Specific search
+ * @method static mixed filter(string $field, string $symbol, string $search, int $limit = null) Filter
+ * @method static mixed all(int limit = null) Get all the results
+ * @method static mixed insert(array $args) Insert one entry
+ * @method static mixed update(int $id, array $args) Update one entry
+ * @method static void delete(int $id) Delete one entry
+ *
+ * Class Resource
+ * @package Shincode\Envision\Support
+ */
 abstract class Resource extends Singleton {
 
     /*
