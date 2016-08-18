@@ -21,7 +21,7 @@ abstract class Singleton {
     */
     
     /*
-    | Private constant
+    | Protected constant
     */
     final protected static function METHOD_SYMBOL() {
         return '_';
