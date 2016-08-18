@@ -20,7 +20,12 @@ abstract class Singleton {
     | Foo::bar();
     */
     
-    const METHODSYMBOL = '_';
+    /*
+    | Private constant
+    */
+    final protected static function METHOD_SYMBOL() {
+        return '_';
+    }
 
     /*
     | Keep a singleton instance
@@ -43,7 +48,7 @@ abstract class Singleton {
     public static function __callStatic($method, $args) {
 
         $instance = static::getInstance();
-        $method .= self::METHODSYMBOL;
+        $method .= self::METHOD_SYMBOL();
 
         switch (count($args)) {
             case 0:
