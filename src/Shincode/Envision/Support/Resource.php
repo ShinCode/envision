@@ -91,9 +91,7 @@ abstract class Resource extends Singleton {
             $modelobj->{$attribute} = $arg;
         }
 
-        $modelobj->save();
-
-        return $modelobj;
+        return $modelobj->save();
     }
 
     /*
