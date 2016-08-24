@@ -46,7 +46,7 @@ class {{ class }} extends {{ parent }} {
 	| standardsave($model, $args);
 	|
 	| Delete one entry
-	| delete_($id);
+	| delete($id);
 	*/
 
 }
