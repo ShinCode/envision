@@ -19,7 +19,7 @@ return array(
 	|
 	*/
 
-	'autoload' => true,
+	'autoload' => false,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -35,7 +35,7 @@ return array(
 	|
 	*/
 
-	'create' => true,
+	'create' => false,
 
 
 	/*
@@ -45,6 +45,7 @@ return array(
 	|
 	| Use Laravel logging for irreversable actions like deleting files.
 	| Set as '' or false if you don't wish to log (not recommended).
+	| (Not yet functional)
 	|
 	*/
 
