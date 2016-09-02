@@ -28,6 +28,15 @@ Add the serviceproviders in `app/config/app.php`:
 
     'Shincode\Envision\EnvisionServiceProvider',
     'Robbo\Presenter\PresenterServiceProvider',
+    
+Copy the config file:
+
+    php artisan config:publish shincode/envision
+    
+In `app/config/packages/shincode/envision/settings.php', set autoload and create to true to enable speed development
+
+    'autoload' => true,
+    'create' => true,
 
 ### Example
 Here's a mini tutorial. Let's create a table called phones for our database. Run the follow artisan command:
