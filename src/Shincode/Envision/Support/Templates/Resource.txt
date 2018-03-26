@@ -1,52 +1,56 @@
-<?php {{ filenamespace }}
+<?php
+
+{{ filenamespace }}
 
 use {{ parentnamespace }}\{{ parent }};
 
-class {{ class }} extends {{ parent }} {
+class {{ class }} extends {{ parent }}
 
-	/*
-	| By default, all methods in this class have an underscore at the end.
-	| This way the methods can be called like they were static.
-	|
-	| Example:
-	|
-	| class Foo {
-	| 	public function bar_() {
-	| 		// This method can be called as static without underscore.
-	| 	}
-	| }
-	|
-	|
-	| Now this works:
-	| Foo::bar();
-	|
-	|-----------------------------------------------------------------
-	|
-	| Default Resource functions:
-	|
-	| Find one model by id
-	| find($id)
-	|
-	| Specific search
-	| search($field, $search)
-	|
-	| Filter
-	| filter($field, $symbol, $search, $limit = null);
-	|
-	| Get all the results
-	| all($limit = null);
-	|
-	| Insert one entry
-	| insert(Array $args);
-	|
-	| Update one entry
-	| update($id, Array $args);
-	|
-	| Standard saving method
-	| standardsave($model, $args);
-	|
-	| Delete one entry
-	| delete($id);
-	*/
+{
+
+	/**
+	 * By default, all methods in this class have an underscore at the end.
+	 * This way the methods can be called like they were static.
+	 *
+	 * Example:
+	 *
+	 * class Foo {
+	 * 	public function bar_() {
+	 * 		// This method can be called as static without underscore.
+	 * 	}
+	 * }
+	 *
+	 *
+	 * Now this works:
+	 * Foo::bar();
+	 *
+	 *-----------------------------------------------------------------
+	 *
+	 * Default Resource functions:
+	 *
+	 * Find one model by id
+	 * find($id)
+	 *
+	 * Specific search
+	 * search($field, $search)
+	 *
+	 * Filter
+	 * filter($field, $symbol, $search, $limit = null);
+	 *
+	 * Get all the results
+	 * all($limit = null);
+	 *
+	 * Insert one entry
+	 * insert(Array $args);
+	 *
+	 * Update one entry
+	 * update($id, Array $args);
+	 *
+	 * Standard saving method
+	 * standardsave($model, $args);
+	 *
+	 * Delete one entry
+	 * delete($id);
+	 */
 
 }

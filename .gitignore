@@ -1,5 +1,6 @@
-/vendor
-composer.phar
-composer.lock
-cmd-open.bat
-.DS_Store
+/vendor/
+/composer.phar
+/composer.lock
+/cmd-open.bat
+/.DS_Store
+/.idea/

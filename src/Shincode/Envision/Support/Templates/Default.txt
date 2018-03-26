@@ -1,7 +1,10 @@
-<?php {{ filenamespace }}
+<?php
+
+{{ filenamespace }}
 
 use {{ parentnamespace }}\{{ parent }};
 
-class {{ class }} extends {{ parent }} {
+class {{ class }} extends {{ parent }}
+{
 
 }

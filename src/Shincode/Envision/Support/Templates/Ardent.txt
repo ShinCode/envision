@@ -1,13 +1,19 @@
-<?php {{ filenamespace }}
+<?php
+
+{{ filenamespace }}
 
 use {{ parentnamespace }}\{{ parent }};
 use Robbo\Presenter\PresentableInterface;
+use Shincode\Envision\Traits\ArdentRelationsFixTrait;
 
-class {{ class }} extends {{ parent }} implements PresentableInterface {
+class {{ class }} extends {{ parent }} implements PresentableInterface
+{
 
-    /*
-    | Return a created presenter.
-    */
+    use ArdentRelationsFixTrait;
+
+    /**
+     * Return a created presenter.
+     */
     public function getPresenter() {
         return new {{ class }}Presenter($this);
     }

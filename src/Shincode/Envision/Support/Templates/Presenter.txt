@@ -1,14 +1,17 @@
-<?php {{ filenamespace }}
+<?php
+
+{{ filenamespace }}
 
 use {{ parentnamespace }}\{{ parent }};
-class {{ class }} extends {{ parent }} {
+class {{ class }} extends {{ parent }}
+{
 
-	/*
-	| Example:
-	| public function presentFoo() {
-    |    return 'bar';
-    | }
-    */
+	/**
+	 * Example:
+	 * public function presentFoo() {
+     *    return 'bar';
+     * }
+     */
 
     public function presentCreatedTime() {
     	return \Carbon\Carbon::createFromTimeStamp(strtotime($this->created_at))->diffForHumans();
