@@ -8,6 +8,7 @@ The goal of using Envision is speeding up development. It does a few things to h
 - Generate and autoload classes that Envision recognises on-the-fly.
 - Uses the Ardent package automatically.
 - Uses the Presenter package automatically.
+- extra test
 
 ### Installation
 
